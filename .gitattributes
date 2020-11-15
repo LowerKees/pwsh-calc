@@ -1,0 +1,3 @@
+*.ps1   diff=astextplain    eol=crlf
+*.yaml  diff=astextplain    eol=lf
+*.yml   diff=astextplain    eol=lf
