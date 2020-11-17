@@ -1,0 +1,29 @@
+name: release-pwsh-calc
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - features/*
+      - master
+  paths:
+    exclude:
+      - .gitattributes
+      - LICENSE
+      - "*.md"
+
+variables:
+  vmImageWindows: windows-latest
+  vmImageUbuntu: ubuntu-latest
+
+stages:
+- stage: build_and_test
+  displayName: build and test
+  variables:
+    dummy: one
+  jobs:
+  - job: unit_test
+    displayName: run unit tests
+    pool:
+      vmImage: ${{ variables.vmImageWindows }}
+    steps:
