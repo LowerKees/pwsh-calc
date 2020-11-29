@@ -13,33 +13,54 @@ class Calculator {
         Returns the subtraction of two integers
     #>
     
-    # Subtractoin function goes here
+    [int] Subtract([int]$x, [int]$y) {
+        return $x - $y
+    }
 
     <#
         .DESCRIPTION
         Returns the multiplication of two integers
     #>
 
-    # Multiplier function goes here
+    [int] Multiply([int]$x, [int]$y) {
+        return $x * $y
+    }
 
     <#
         .DESCRIPTION
         Returns the division of two integers
     #>
 
-    # Division function goes here
+    [int] Divide([int]$x, [int]$y) {
+        try {
+            return $x / $y
+        }
+        catch {
+            if ($_.Exception.Message -eq "Attempted to divide by zero.") {
+                Write-Warning "You cannot divide by zero"
+                throw
+            }
+            else {
+                throw
+            }
+        }
+    }
 
     <#
         .DESCRIPTION
         Returns the input squared
     #>
 
-    # Squared function goes here
+    [bigint] Power([int]$x) {
+        return $x * $x
+    }
 
     <#
         .DESCRIPTION
         Returns the input cubed
     #>
 
-    # Cubed function goes here
+    [bigint] Cube([int]$x) {
+        return $x * $x * $x
+    }
 }
